@@ -1,5 +1,4 @@
 const departamentos = document.querySelectorAll("a");
-// const mapa = document.querySelector(".mapadiv");
 
 const url = 'https://www.google.com/search?q=';
 
@@ -44,22 +43,17 @@ departamentos.forEach((departamento) => {
   departamento.addEventListener("click", () => {
   //Se accede a la informacion individual de la zona que se hizo click
     const codigoDepartamento = departamento.childNodes[1].id;
-    console.log(codigosDepartamentos[codigoDepartamento]);
-    //Con el codigo accedemos al valor en el objeto codigosDepartamentos
-    //Para usar como valor en la busqueda
+    //Con el codigo accedemos al valor en el objeto codigosDepartamentos, para usar como valor en la busqueda
     const query = codigosDepartamentos[codigoDepartamento];
     //Enviamos a una funcion una url concatenada a la busqueda especifica
     abrirNuevoTab(`${url+query}`);
-
-    // console.log(Object.keys(codigosDepartamentos));
-    // console.log(Object.values(codigosDepartamentos));
   });
 });
 
 function abrirNuevoTab(url) {
-  // Abrir nuevo tab
+  // Abrir nueva pestaña
   var win = window.open(url, '_blank');
-  // Cambiar el foco al nuevo tab (punto opcional)
+  // Cambiar a la nueva pestaña
   win.focus();
 }
 

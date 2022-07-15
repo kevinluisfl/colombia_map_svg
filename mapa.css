@@ -13,7 +13,6 @@ body{
     stroke-width: 2px;
 }
 
-/* .mapadiv :hover{ */
 a :hover{
     fill: #C0392B;
     cursor: pointer;
