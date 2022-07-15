@@ -1,7 +1,9 @@
-const depar = document.querySelectorAll("a");
-const mapa = document.querySelector(".mapadiv");
+const departamentos = document.querySelectorAll("a");
+// const mapa = document.querySelector(".mapadiv");
 
-const codigos = {
+const url = 'https://www.google.com/search?q=';
+
+const codigosDepartamentos = {
   COL1283: "Amazonas",
   COL1314: "Antioquia",
   COL1315: "Boyacá",
@@ -37,10 +39,37 @@ const codigos = {
   COL1427: "Vichada",
 };
 
-depar.forEach((dp) => {
-  dp.addEventListener("click", () => {
-    console.log(dp);
-    console.log(dp.childNodes);
-    console.log(dp.childNodes[1].id);
+//Se recorren los enlaces individuales
+departamentos.forEach((departamento) => {
+  departamento.addEventListener("click", () => {
+  //Se accede a la informacion individual de la zona que se hizo click
+    const codigoDepartamento = departamento.childNodes[1].id;
+    console.log(codigosDepartamentos[codigoDepartamento]);
+    //Con el codigo accedemos al valor en el objeto codigosDepartamentos
+    //Para usar como valor en la busqueda
+    const query = codigosDepartamentos[codigoDepartamento];
+    //Enviamos a una funcion una url concatenada a la busqueda especifica
+    abrirNuevoTab(`${url+query}`);
+
+    // console.log(Object.keys(codigosDepartamentos));
+    // console.log(Object.values(codigosDepartamentos));
   });
 });
+
+function abrirNuevoTab(url) {
+  // Abrir nuevo tab
+  var win = window.open(url, '_blank');
+  // Cambiar el foco al nuevo tab (punto opcional)
+  win.focus();
+}
+
+
+
+/**
+ *  CREDITOS
+ *  https://www.youtube.com/watch?v=g2-iIbYWWII
+ *  APOYO
+ *  https://simplemaps.com/resources/svg-co
+ *  https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects
+ *  https://unipython.com/como-abrir-una-nueva-pestana-con-java-script/
+ */
